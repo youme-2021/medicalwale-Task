@@ -1,0 +1,18 @@
+RewriteEngine On
+    #Checks to see if the user is attempting to access a valid file,
+    #such as an image or css document, if this isn't true it sends the
+    #request to index.php
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond $1 !^(index\.php|public|robots\.txt)
+    RewriteRule ^(.*)$ index.php?/$1 [L]
+
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
